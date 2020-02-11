@@ -15,12 +15,12 @@ project 1 - A Random Quote Generator
 const quotes = [
   {
     quote : "Nothing bring people together like good food.",
-    source: "Anonymous ",
+    source: "Anonymous",
   },
   {
     quote : "It's amazing how a little tomorrow can make up for a whole lot of yesterday.",
     source: "John Guare",
-    citation:"Landscape Body Play"
+    citation:"Landscape of the Body Play"
   },
   {
     quote : "The best way to predict the future is to create it.",
@@ -50,7 +50,19 @@ const quotes = [
   /***
    * `printQuote` function
   ***/
- 
+  function printQuote(){
+  
+  const randomQuote = getRandomQuote();
+  let prop = '<p class="quote">'+randomQuote.quote+'</p><p class="source">'+ randomQuote.source;
+
+  if (randomQuote.citation){
+    prop +='<span class="citation">'+randomQuote.citation+'</span>';
+  } 
+  if (randomQuote.year) {
+    prop +='<span class="year">'+randomQuote.year+'</span></p>'
+  }
+    document.getElementById('quote-box').innerHTML = prop;
+  }
   
   
 
