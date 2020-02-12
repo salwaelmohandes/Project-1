@@ -48,7 +48,6 @@ project 1 - A Random Quote Generator
     let randomQuote = quotes[Math.floor(Math.random()*quotes.length)];
     return randomQuote;
   }
-  
   /***
    * `printQuote` function
    * displays a new quote each time the user clicks the button
@@ -69,27 +68,22 @@ project 1 - A Random Quote Generator
     document.getElementById('quote-box').innerHTML = prop; 
     changeBackgroundColor(); 
   } 
-
-  /***
-   * displays the quote for the first time after button click
-   * then updates the quote automatically in regular intervals 
+   /***
+   * updates the quote automatically in regular intervals when the page loads
    ***/
-  function updateQuote() {
-    printQuote();
-    let timer = setInterval(printQuote , 10000);
-  }
-
-  /***
+    let timer = setInterval(printQuote , 5000);
+  
+   /***
    * update the background color to a random color 
+   * choose 5 colors from the color picker
    ***/
   function changeBackgroundColor(){
-    let colors = ['#E16A51','#106AA5','#900C3F','#EEBC2D',' #FFC300' ];
+    let colors = ['#E16A51','#85C5CF ','#900C3F','#EEBC2D',' #FFC300' ];
     randomColor = colors[ Math.floor(Math.random()* colors.length) ];
     document.body.style.background = randomColor;
   }
-
-  /***
+   /***
    * click event listener for the print quote button
    * DO NOT CHANGE THE CODE BELOW!!
-  ***/
-  document.getElementById('load-quote').addEventListener("click", updateQuote, false);
+   ***/
+  document.getElementById('load-quote').addEventListener("click", printQuote, false);

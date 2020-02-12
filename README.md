@@ -8,6 +8,6 @@
  I added the new property to the HTML string to display it if its exist.
  I changed the CSS file and added the new property to it.
  I got a random quote from the quotes array.
- I displayed the quote for the first time after button click.
- I then updated the quote automatically in regular intervals.
+ I displays a new quote each time the user clicks the button
+ I then updates the quote automatically with the background in regular intervals.
  I updated the background color to a random color. 
