@@ -3,72 +3,93 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-  // Check the "Project Resources" section of the project instructions
-  // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
+/***
+ * I am going for the exceed expectations
+ * I created an array of objects to store the different properties of the quotes
+ * I also added an additional property "type" to one of the objects 
+ * I added the new property to the HTML string to display it if its exist 
+ * I changed the CSS file and added the new property to it 
+ ***/
 
 /*** 
  * `quotes` array 
+ * array of quote objects 
 ***/
-
-
-const quotes = [
+  const quotes = [
   {
-    quote : "Nothing bring people together like good food.",
-    source: "Anonymous",
+    quote   : "Nothing brings people together like good food.",
+    source  : "Anonymous",
+    type    : "Restaurant Sayings"
   },
   {
-    quote : "It's amazing how a little tomorrow can make up for a whole lot of yesterday.",
-    source: "John Guare",
-    citation:"Landscape of the Body Play"
+    quote   : "It's amazing how a little tomorrow can make up for a whole lot of yesterday.",
+    source  : "John Guare",
+    citation: "Landscape of the Body Play"
   },
   {
-    quote : "The best way to predict the future is to create it.",
-    source: "Abraham Lincoln"
+    quote   : "The best way to predict the future is to create it.",
+    source  : "Abraham Lincoln"
   },
   {
-    quote : "Try to be rainbow in someone's cloud.",
-    source: "Maya Angelou",
-    year: 2008
+    quote   : "Try to be rainbow in someone's cloud.",
+    source  : "Maya Angelou",
+    year    :  2008
   },
   {
-    quote : "Never ruin an apology with an excuse.",
-    source: "Benjamin Franklin"
+    quote   : "Never ruin an apology with an excuse.",
+    source  : "Benjamin Franklin"
   }];
-  
-  
+
   /***
    * `getRandomQuote` function
+   * get a random quote from the quotes array 
   ***/
-  
   function getRandomQuote() {
     let randomQuote = quotes[Math.floor(Math.random()*quotes.length)];
     return randomQuote;
   }
   
-  
   /***
    * `printQuote` function
-  ***/
+   * displays a new quote each time the user clicks the button
+  ***/ 
   function printQuote(){
-  
-  const randomQuote = getRandomQuote();
-  let prop = '<p class="quote">'+randomQuote.quote+'</p><p class="source">'+ randomQuote.source;
+    const randomQuote = getRandomQuote();
+    let prop = '<p class="quote">'+randomQuote.quote+'</p><p class="source">'+ randomQuote.source;
 
-  if (randomQuote.citation){
-    prop +='<span class="citation">'+randomQuote.citation+'</span>';
+    if (randomQuote.citation){
+      prop +='<span class="citation">'+randomQuote.citation+'</span>';
+    } 
+    if (randomQuote.year){
+      prop +='<span class="year">'+randomQuote.year+'</span>';
+    }
+    if (randomQuote.type){
+      prop +='<span class="type">'+randomQuote.type+'</span></p>'
+    }
+    document.getElementById('quote-box').innerHTML = prop; 
+    changeBackgroundColor(); 
   } 
-  if (randomQuote.year) {
-    prop +='<span class="year">'+randomQuote.year+'</span></p>'
+
+  /***
+   * displays the quote for the first time after button click
+   * then updates the quote automatically in regular intervals 
+   ***/
+  function updateQuote() {
+    printQuote();
+    let timer = setInterval(printQuote , 10000);
   }
-    document.getElementById('quote-box').innerHTML = prop;
+
+  /***
+   * update the background color to a random color 
+   ***/
+  function changeBackgroundColor(){
+    let colors = ['#E16A51','#106AA5','#900C3F','#EEBC2D',' #FFC300' ];
+    randomColor = colors[ Math.floor(Math.random()* colors.length) ];
+    document.body.style.background = randomColor;
   }
-  
-  
 
   /***
    * click event listener for the print quote button
    * DO NOT CHANGE THE CODE BELOW!!
   ***/
-  
-  document.getElementById('load-quote').addEventListener("click", printQuote, false);
+  document.getElementById('load-quote').addEventListener("click", updateQuote, false);
