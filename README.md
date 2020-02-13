@@ -11,3 +11,4 @@
  I displays a new quote each time the user clicks the button
  I then updates the quote automatically with the background in regular intervals.
  I updated the background color to a random color. 
+ I added some comments to JavaScript file.
